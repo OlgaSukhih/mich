@@ -412,66 +412,89 @@
 
   </div>
 
-  <div class="buttons">
-    <button onclick="showTranslation()">Translation</button>
-    <button onclick="showDiscussion()">Discussion</button>
-  </div>
+ <div class="buttons">
+  <button onclick="showTranslation()">Translation</button>
+  <button onclick="showDiscussion()">Discussion</button>
+</div>
 
-  <script>
-function checkChoice(el) {
-  const isCorrect = el.getAttribute("data-correct") === "true";
-  const siblings = el.parentElement.querySelectorAll(".choice");
+<script>
+  function checkChoice(el) {
+    const isCorrect = el.getAttribute("data-correct") === "true";
+    const siblings = el.parentElement.querySelectorAll(".choice");
 
-  siblings.forEach(sib => {
-    sib.classList.remove("correct", "incorrect");
-    sib.style.pointerEvents = "none";
-  });
-
-  if (isCorrect) {
-    el.classList.add("correct");
-  } else {
-    el.classList.add("incorrect");
     siblings.forEach(sib => {
-      if (sib.getAttribute("data-correct") === "true") {
-        sib.classList.add("correct");
-      }
+      sib.classList.remove("correct", "incorrect");
+      sib.style.pointerEvents = "none";
     });
-  }
-}
-</script>
-<script>
-    function checkChoice(el) {
-      const isCorrect = el.getAttribute("data-correct") === "true";
-      const siblings = el.parentElement.querySelectorAll(".choice");
 
+    if (isCorrect) {
+      el.classList.add("correct");
+    } else {
+      el.classList.add("incorrect");
       siblings.forEach(sib => {
-        sib.classList.remove("correct", "incorrect");
-        sib.style.pointerEvents = "none";
+        if (sib.getAttribute("data-correct") === "true") {
+          sib.classList.add("correct");
+        }
       });
-
-      if (isCorrect) {
-        el.classList.add("correct");
-      } else {
-        el.classList.add("incorrect");
-        siblings.forEach(sib => {
-          if (sib.getAttribute("data-correct") === "true") {
-            sib.classList.add("correct");
-          }
-        });
-      }
     }
+  }
 
-<script>
   function showTranslation() {
     alert(`Перевод:
-Скинхеды, мертвецы
-Все сошли с ума
-Ситуация, раздражение
-Все кого-то обвиняют
-В номере, в новостях
-Все — как собачья еда
-Выстрел — убит
-Все сошли с ума`);
+Скинхеды, мертвецы,
+Все сошли с ума,
+Ситуация, раздражение,
+Все кого-то обвиняют,
+В номере, в новостях,
+Все — как собачья еда.
+
+Выстрел — убит,
+Все сошли с ума.
+
+Все, что я хочу сказать, это что
+Они на самом деле
+Не заботятся о нас.
+
+Все, что я хочу сказать, это что
+Они на самом деле
+Не заботятся о нас.
+
+Побей меня,
+Ненавидь меня,
+Ты никогда не сможешь меня сломать.
+
+Ты никогда не сможешь меня убить.
+Позови меня,
+Подай мне суд,
+Ты никогда не сможешь меня остановить.
+
+Взрыв, выстрел,
+Не можешь меня разрушить,
+Ты не сможешь меня убить,
+Позови меня,
+Подай мне суд.
+
+Ты можешь меня обидеть,
+Ненавидь меня,
+Ты никогда не сможешь меня сломать,
+Не сможешь меня убить.
+
+Все, что я хочу сказать, это что
+Они на самом деле
+Не заботятся о нас.
+
+Все, что я хочу сказать, это что
+Они на самом деле
+Не заботятся о нас.
+
+Ты можешь меня обидеть,
+Ты можешь меня обвинить,
+Ты можешь меня унизить,
+Но не можешь меня убить.
+
+Мир не будет слышать, что я говорю,
+Ты думаешь, что ты победишь,
+Но я буду бороться за свою жизнь.`);
   }
 
   function showDiscussion() {
@@ -484,6 +507,5 @@ function checkChoice(el) {
   }
 </script>
 
-  </script>
 </body>
 </html>
