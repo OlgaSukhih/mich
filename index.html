@@ -516,6 +516,28 @@ window.onclick = function(event) {
     event.target.style.display = "none";
   }
 }
+
+// Функция для проверки выбора
+function checkChoice(el) {
+  const isCorrect = el.getAttribute("data-correct") === "true";
+  const siblings = el.parentElement.querySelectorAll(".choice");
+
+  siblings.forEach(sib => {
+    sib.classList.remove("correct", "incorrect");
+    sib.style.pointerEvents = "none";
+  });
+
+  if (isCorrect) {
+    el.classList.add("correct");
+  } else {
+    el.classList.add("incorrect");
+    siblings.forEach(sib => {
+      if (sib.getAttribute("data-correct") === "true") {
+        sib.classList.add("correct");
+      }
+    });
+  }
+}
 </script>
 
 <!-- Стили для модальных окон -->
@@ -523,7 +545,7 @@ window.onclick = function(event) {
   .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2; /* изменено на более высокий приоритет */
     left: 0;
     top: 0;
     width: 100%;
