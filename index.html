@@ -412,100 +412,148 @@
 
   </div>
 
- <div class="buttons">
+<div class="buttons">
   <button onclick="showTranslation()">Translation</button>
   <button onclick="showDiscussion()">Discussion</button>
 </div>
 
+<!-- Модальное окно для перевода -->
+<div id="translationModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('translationModal')">&times;</span>
+    <h2>Перевод песни</h2>
+    <p>
+      Скинхеды, мертвецы<br>
+      Все сошли с ума<br>
+      Ситуация, раздражение<br>
+      Все кого-то обвиняют<br>
+      В номере, в новостях<br>
+      Все — как собачья еда<br>
+      Выстрел — убит<br>
+      Все сошли с ума<br><br>
+
+      Все, что я хочу сказать, это что<br>
+      Они на самом деле<br>
+      Не заботятся о нас.<br><br>
+
+      Все, что я хочу сказать, это что<br>
+      Они на самом деле<br>
+      Не заботятся о нас.<br><br>
+
+      Побей меня,<br>
+      Ненавидь меня,<br>
+      Ты никогда не сможешь меня сломать.<br><br>
+
+      Ты никогда не сможешь меня убить.<br>
+      Позови меня,<br>
+      Подай мне суд,<br>
+      Ты никогда не сможешь меня остановить.<br><br>
+
+      Взрыв, выстрел,<br>
+      Не можешь меня разрушить,<br>
+      Ты не сможешь меня убить,<br>
+      Позови меня,<br>
+      Подай мне суд.<br><br>
+
+      Ты можешь меня обидеть,<br>
+      Ненавидь меня,<br>
+      Ты никогда не сможешь меня сломать,<br>
+      Не сможешь меня убить.<br><br>
+
+      Все, что я хочу сказать, это что<br>
+      Они на самом деле<br>
+      Не заботятся о нас.<br><br>
+
+      Все, что я хочу сказать, это что<br>
+      Они на самом деле<br>
+      Не заботятся о нас.<br><br>
+
+      Ты можешь меня обидеть,<br>
+      Ты можешь меня обвинить,<br>
+      Ты можешь меня унизить,<br>
+      Но не можешь меня убить.<br><br>
+
+      Мир не будет слышать, что я говорю,<br>
+      Ты думаешь, что ты победишь,<br>
+      Но я буду бороться за свою жизнь.
+    </p>
+  </div>
+</div>
+
+<!-- Модальное окно для обсуждения -->
+<div id="discussionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('discussionModal')">&times;</span>
+    <h2>Discussion Questions</h2>
+    <ol>
+      <li>What social issues are mentioned in this song?</li>
+      <li>How does the artist express frustration or anger?</li>
+      <li>Which line do you find the most powerful and why?</li>
+      <li>How does this song relate to news or reality today?</li>
+      <li>What is the main message of the chorus?</li>
+    </ol>
+  </div>
+</div>
+
 <script>
-  function checkChoice(el) {
-    const isCorrect = el.getAttribute("data-correct") === "true";
-    const siblings = el.parentElement.querySelectorAll(".choice");
+// Открытие модального окна
+function showTranslation() {
+  document.getElementById("translationModal").style.display = "block";
+}
 
-    siblings.forEach(sib => {
-      sib.classList.remove("correct", "incorrect");
-      sib.style.pointerEvents = "none";
-    });
+function showDiscussion() {
+  document.getElementById("discussionModal").style.display = "block";
+}
 
-    if (isCorrect) {
-      el.classList.add("correct");
-    } else {
-      el.classList.add("incorrect");
-      siblings.forEach(sib => {
-        if (sib.getAttribute("data-correct") === "true") {
-          sib.classList.add("correct");
-        }
-      });
-    }
+// Закрытие модального окна
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+
+// Закрытие модальных окон при клике вне области модального окна
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = "none";
   }
-
-  function showTranslation() {
-    alert(`Перевод:
-Скинхеды, мертвецы,
-Все сошли с ума,
-Ситуация, раздражение,
-Все кого-то обвиняют,
-В номере, в новостях,
-Все — как собачья еда.
-
-Выстрел — убит,
-Все сошли с ума.
-
-Все, что я хочу сказать, это что
-Они на самом деле
-Не заботятся о нас.
-
-Все, что я хочу сказать, это что
-Они на самом деле
-Не заботятся о нас.
-
-Побей меня,
-Ненавидь меня,
-Ты никогда не сможешь меня сломать.
-
-Ты никогда не сможешь меня убить.
-Позови меня,
-Подай мне суд,
-Ты никогда не сможешь меня остановить.
-
-Взрыв, выстрел,
-Не можешь меня разрушить,
-Ты не сможешь меня убить,
-Позови меня,
-Подай мне суд.
-
-Ты можешь меня обидеть,
-Ненавидь меня,
-Ты никогда не сможешь меня сломать,
-Не сможешь меня убить.
-
-Все, что я хочу сказать, это что
-Они на самом деле
-Не заботятся о нас.
-
-Все, что я хочу сказать, это что
-Они на самом деле
-Не заботятся о нас.
-
-Ты можешь меня обидеть,
-Ты можешь меня обвинить,
-Ты можешь меня унизить,
-Но не можешь меня убить.
-
-Мир не будет слышать, что я говорю,
-Ты думаешь, что ты победишь,
-Но я буду бороться за свою жизнь.`);
-  }
-
-  function showDiscussion() {
-    alert(`Discussion Questions:
-1. What social issues are mentioned in this song?
-2. How does the artist express frustration or anger?
-3. Which line do you find the most powerful and why?
-4. How does this song relate to news or reality today?
-5. What is the main message of the chorus?`);
-  }
+}
 </script>
 
-</body>
-</html>
+<!-- Стили для модальных окон -->
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: black;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
