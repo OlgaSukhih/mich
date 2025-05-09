@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>They Don't Care About Us — Listen & Understand</title>
+  <style>
+    body {
+      background-color: #1b1b2f;
+      color: #ffffff;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 5px;
+    }
+    h2 a {
+      color: #7ec8e3;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    audio {
+      display: block;
+      margin: 30px auto;
+    }
+    .lyrics-container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .girl-img {
+      position: absolute;
+      left: -240px;
+      top: 0;
+      width: 180px;
+    }
+    .lips {
+      position: absolute;
+      right: -200px;
+      top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      width: 140px;
+      height: 700px;
+    }
+    .line {
+      margin-bottom: 24px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .options {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: 10px;
+      justify-content: center;
+    }
+    .choice {
+      background-color: #2f2f3d;
+      color: #ffffff;
+      border: 2px solid #555;
+      border-radius: 10px;
+      padding: 6px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .choice:hover {
+      background-color: #3f3f50;
+    }
+    .choice.correct {
+      background-color: #88b388;
+      border-color: #88b388;
+    }
+    .choice.incorrect {
+      background-color: #e8a6b5;
+      border-color: #e8a6b5;
+    }
+    .buttons {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .buttons button {
+      background-color: pink;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>They Don't Care About Us</h1>
+  <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&GetInspired</a></h2>
+
+  <audio controls>
+    <source src="They Don't Care About Us.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="lyrics-container">
+    <img class="girl-img" src="20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Hat man" />
+    
+    <div class="line">
+      Skin head,
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">dead head</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">red head</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">big head</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody gone bad</div>
+
+    <div class="line">
+      Situation,
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">aggravation</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">celebration</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">invitation</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody allegation</div>
+
+    <div class="line">
+      In the suite, on the
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">news</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">roof</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">bus</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody dog food</div>
+
+    <div class="line">
+      Bang bang, shot
+      <span class="options">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">dead</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">glass</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">gun</span>
+      </span>
+    </div>
+
+    <div class="line">Everybody's gone mad</div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="showTranslation()">Translation</button>
+    <button onclick="showDiscussion()">Discussion</button>
+  </div>
+
+  <script>
+function checkChoice(el) {
+  const isCorrect = el.getAttribute("data-correct") === "true";
+  const siblings = el.parentElement.querySelectorAll(".choice");
+
+  siblings.forEach(sib => {
+    sib.classList.remove("correct", "incorrect");
+    sib.style.pointerEvents = "none";
+  });
+
+  if (isCorrect) {
+    el.classList.add("correct");
+  } else {
+    el.classList.add("incorrect");
+    siblings.forEach(sib => {
+      if (sib.getAttribute("data-correct") === "true") {
+        sib.classList.add("correct");
+      }
+    });
+  }
+}
+</script>
+<script>
+    function checkChoice(el) {
+      const isCorrect = el.getAttribute("data-correct") === "true";
+      const siblings = el.parentElement.querySelectorAll(".choice");
+
+      siblings.forEach(sib => {
+        sib.classList.remove("correct", "incorrect");
+        sib.style.pointerEvents = "none";
+      });
+
+      if (isCorrect) {
+        el.classList.add("correct");
+      } else {
+        el.classList.add("incorrect");
+        siblings.forEach(sib => {
+          if (sib.getAttribute("data-correct") === "true") {
+            sib.classList.add("correct");
+          }
+        });
+      }
+    }
+
+    function showTranslation() {
+      alert("Перевод:
+Скинхеды, мертвецы
+Все сошли с ума
+Ситуация, раздражение
+Все кого-то обвиняют
+В номере, в новостях
+Все — как собачья еда
+Выстрел — убит
+Все сошли с ума");
+    }
+
+    function showDiscussion() {
+      alert(`Discussion Questions:
+1. What social issues are mentioned in this song?
+2. How does the artist express frustration or anger?
+3. Which line do you find the most powerful and why?
+4. How does this song relate to news or reality today?
+5. What is the main message of the chorus?`);
+    }
+  </script>
+</body>
+</html>
